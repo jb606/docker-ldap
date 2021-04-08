@@ -1,0 +1,8 @@
+dn: cn=module,cn=config
+objectClass: olcModuleList
+olcModulePath: /usr/lib64/openldap
+olcModuleLoad: back_hdb
+olcModuleLoad: back_ldap
+olcModuleLoad: back_meta
+olcModuleLoad: rwm
+

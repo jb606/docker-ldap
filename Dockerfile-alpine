@@ -1,0 +1,24 @@
+FROM alpine:latest
+
+EXPOSE 389 636
+
+#COPY files/a.repo /etc/yum.repos.d/
+#RUN yum update --disablerepo=base,updates,extras,centosplus -y && \
+#    yum install --disablerepo=base,updates,extras,centosplus openldap-servers openldap-clients -y && \
+#    yum clean all
+RUN apk update && \
+    apk upgrade && \
+    apk add bash ca-certificates openldap openldap-clients openldap-back-meta openldap-back-mdb openldap-back-ldap && \
+    rm -rf /var/cache/apk/*
+
+
+COPY files/entrypoint.sh /
+COPY files/config_base.ldif /files/
+COPY files/basecfg.ldif /files/
+COPY files/ldif.d /files/ldif.d/
+RUN chmod 755 /entrypoint.sh
+COPY files/*.crt /usr/local/share/ca-certificates/
+RUN update-ca-certificates
+VOLUME [ "/var/lib/ldap" ]
+ENTRYPOINT ["/entrypoint.sh"]
+

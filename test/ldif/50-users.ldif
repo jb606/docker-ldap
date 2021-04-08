@@ -1,0 +1,6 @@
+dn: cn=bind,dc=org,dc=local
+cn: bind
+objectclass: simpleSecurityObject
+objectclass: top
+objectclass: organizationalRole
+userpassword: {SSHA}LjW38AVv2/qwNL0Ifeh87E5xN8uxVPIK

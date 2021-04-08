@@ -1,0 +1,30 @@
+# Entry 1: olcDatabase={2}meta,cn=config
+dn: olcDatabase={2}meta,cn=config
+objectclass: olcDatabaseConfig
+objectclass: olcMetaConfig
+olcaccess: {0}to * by * read
+olcdatabase: {2}meta
+olcdbcancel: abandon
+olcdbonerr: continue
+olcdbrebindasuser: TRUE
+olcdbtfsupport: no
+olcsuffix: o=org
+
+# Entry 2: olcMetaSub={0}uri,olcDatabase={2}meta,cn=config
+dn: olcMetaSub={0}uri,olcDatabase={2}meta,cn=config
+objectclass: olcMetaTargetConfig
+olcdbbindtimeout: 100000
+olcdbcancel: abandon
+#olcdbchasereferrals: TRUE
+olcdbidassertbind: mode=self bindmethod=simple binddn="cn=bind,ou=SvcAccounts,dc=lab,dc=lan" credentials="xxxx"
+olcdbkeepalive: 0:0:0
+olcdbmap: {0}attribute uid sAMAccountName
+olcdbmap: {1}attribute homeDirectory unixHomeDirectory
+olcdbrebindasuser: TRUE
+olcdbrewrite: {0}suffixmassage "dc=lab,o=org" "dc=lab,dc=lan"
+olcdburi: "ldaps://dc01.lab.lan/dc=lab,o=org"
+olcdbStartTLS: ldaps starttls=no
+#olcdburi: "ldap://dc01.lab.lan/dc=lab,o=org"
+olcDbChaseReferrals: FALSE
+olcmetasub: {0}uri
+

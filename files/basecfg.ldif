@@ -1,0 +1,11 @@
+dn: SUFFIX
+objectclass: dcObject
+objectclass: organization
+o: The Place
+dc: FIRSTDC
+
+dn: ROOTDN,SUFFIX
+objectClass: organizationalRole
+objectClass: simpleSecurityObject
+userPassword: ROOT_PASSWORD
+

@@ -1,0 +1,15 @@
+dn: cn=config
+changetype: modify
+delete: olcTLSCACertificatePath
+-
+replace: olcTLSCACertificateFile
+olcTLSCACertificateFile: TLS_CA
+-
+replace: olcTLSCertificateFile
+olcTLSCertificateFile: TLS_CERT
+-
+replace: olcTLSCertificateKeyFile
+olcTLSCertificateKeyFile: TLS_KEY
+-
+add: olcTLSVerifyClient
+olcTLSVerifyClient: try
